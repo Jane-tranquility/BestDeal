@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ProductCatalog>
+
+<SmartPhoneCatalog>
+    <smartphone id="iphone7">
+        <name>iphone7</name>
+        <price>583.99</price>
+        <image>iphone7.jpg</image>
+        <manufacturer>Apple</manufacturer>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </smartphone>
+    <smartphone id="iphoneSE">
+        <name>iphoneSE</name>
+        <price>319.99</price>
+        <image>iphoneSE.jpg</image>
+        <manufacturer>Apple</manufacturer>
+        <condition>New</condition>
+        <discount>20.0</discount>
+    </smartphone>
+    <smartphone id="GalaxyS7">
+        <name>Galaxy S7</name>
+        <price>449.99</price>
+        <image>galaxyS7.jpg</image>
+        <manufacturer>Samsung</manufacturer>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </smartphone>
+    <smartphone id="Xperia">
+        <name>Xperia</name>
+        <price>559.99</price>
+        <image>xperia.jpg</image>
+        <manufacturer>Sony</manufacturer>
+        <condition>New</condition>
+        <discount>15.0</discount>
+    </smartphone>
+    <smartphone id="Pixel">
+        <name>Pixel</name>
+        <price>589.99</price>
+        <image>pixel.jpg</image>
+        <manufacturer>Google</manufacturer>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </smartphone>
+</SmartPhoneCatalog>
+
+<TabletCatalog>
+    <tablet id="ipad">
+        <name>Apple Ipad Pro</name>
+        <price>189.99</price>
+        <image>apple1.jpg</image>
+        <manufacturer>Apple</manufacturer>
+        <condition>New</condition>
+        <discount>40.0</discount>
+    </tablet>
+    <tablet id="ipad3">
+        <name>Apple Ipad 3</name>
+        <price>189.99</price>
+        <image>apple2.jpg</image>
+        <manufacturer>Apple</manufacturer>
+        <condition>Used</condition>
+        <discount>20.0</discount>
+    </tablet>
+    <tablet id="Surface">
+        <name>Surface</name>
+        <price>299.99</price>
+        <image>m1.jpg</image>
+        <manufacturer>Microsoft</manufacturer>
+        <condition>New</condition>
+        <discount>15.0</discount>
+    </tablet>
+    <tablet id="Surface4">
+        <name>Surface Pro 4</name>
+        <price>299.99</price>
+        <image>m2.jpg</image>
+        <manufacturer>Microsoft</manufacturer>
+        <condition>New</condition>
+        <discount>15.0</discount>
+    </tablet>
+    <tablet id="Samsung2">
+        <name>Samsung Tab 2</name>
+        <price>150.99</price>
+        <image>s1.jpg</image>
+        <manufacturer>Samsung</manufacturer>
+        <condition>New</condition>
+        <discount>15.0</discount>
+    </tablet>
+</TabletCatalog>
+
+<TVCatalog>
+	<TV id="J5500">
+        <name>Samsung J5500 Series</name>
+        <price>249.99</price>
+        <image>j5500Series.jpg</image>
+        <manufacturer>Samsung</manufacturer>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </TV>
+    <TV id="55L421U">
+        <name>Toshiba 55L421U</name>
+        <price>319.99</price>
+        <image>55L421U.jpg</image>
+        <manufacturer>Toshiba</manufacturer>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </TV>
+    <TV id="43LH570A">
+        <name>LG 43LH570A</name>
+        <price>299.99</price>
+        <image>43LH570A.jpg</image>
+        <manufacturer>LG</manufacturer>
+        <condition>New</condition>
+        <discount>15.0</discount>
+    </TV>
+    <TV id="LC-50LB481U">
+        <name>Sharp LC-50LB481U</name>
+        <price>229.99</price>
+        <image>LC-50LB481U.jpg</image>
+        <manufacturer>Sharp</manufacturer>
+        <condition>New</condition>
+        <discount>15.0</discount>
+    </TV>
+    <TV id="UN60J6200AFXZA">
+        <name>Samsung UN60J6200AFXZA</name>
+        <price>589.99</price>
+        <image>UN60J6200AFXZA.jpg</image>
+        <manufacturer>Samsung</manufacturer>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </TV>
+</TVCatalog>
+
+<LaptopCatalog>
+	<Laptop id="Inspiron2">
+        <name>Dell Inspiron2</name>
+        <price>559.99</price>
+        <image>inspiron2.jpg</image>
+        <manufacturer>Dell</manufacturer>
+        <condition>New</condition>
+        <discount>15.0</discount>
+    </Laptop>
+    <Laptop id="Yoga">
+        <name>Lenovo Yoga</name>
+        <price>389.99</price>
+        <image>yoga.jpg</image>
+        <manufacturer>Lenovo</manufacturer>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </Laptop>
+    <Laptop id="SurfaceBook">
+        <name>Microsoft Surface Book</name>
+        <price>1519.99</price>
+        <image>surfaceBook.jpg</image>
+        <manufacturer>Microsoft</manufacturer>
+        <condition>New</condition>
+        <discount>20.0</discount>
+    </Laptop>
+    <Laptop id="MacbookPro">
+        <name>Macbook Pro</name>
+        <price>939.99</price>
+        <image>MacbookPro.jpg</image>
+        <manufacturer>Apple</manufacturer>
+        <condition>New</condition>
+        <discount>15.0</discount>
+    </Laptop>
+    <Laptop id="MacbookAir">
+        <name>MacbookAir</name>
+        <price>899.99</price>
+        <image>MacbookAir.jpg</image>
+        <manufacturer>Apple</manufacturer>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </Laptop>
+</LaptopCatalog>
+
+</ProductCatalog>
