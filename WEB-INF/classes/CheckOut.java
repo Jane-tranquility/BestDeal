@@ -19,7 +19,7 @@ public class CheckOut extends HttpServlet {
 		
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
-	        Utilities Utility = new Utilities(request, pw);
+	    Utilities Utility = new Utilities(request, pw);
 		storeOrders(request, response);
 	}
 	

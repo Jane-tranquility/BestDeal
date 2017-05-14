@@ -49,13 +49,14 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		//hashmap gets all the order details from file 
 
 		HashMap<Integer, ArrayList<OrderPayment>> orderPayments = new HashMap<Integer, ArrayList<OrderPayment>>();
-		String TOMCAT_HOME = System.getProperty("catalina.home");
+		//String TOMCAT_HOME = System.getProperty("catalina.home");
 
 		try
 		{
-			FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\BestDeal\\PaymentDetails.txt"));
-			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
-			orderPayments = (HashMap)objectInputStream.readObject();
+			//FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\BestDeal\\PaymentDetails.txt"));
+			//ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
+			//orderPayments = (HashMap)objectInputStream.readObject();
+			orderPayments=MySQLDataStoreUtilities.selectOrder();
 		}
 		catch(Exception e)
 		{
@@ -73,9 +74,10 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			//get the order details from file
 			try
 		    {
-				FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\BestDeal\\PaymentDetails.txt"));
-				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
-				orderPayments = (HashMap)objectInputStream.readObject();
+				//FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\BestDeal\\PaymentDetails.txt"));
+				//ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
+				//orderPayments = (HashMap)objectInputStream.readObject();
+				orderPayments=MySQLDataStoreUtilities.selectOrder();
 			}
 			catch(Exception e)
 			{
@@ -86,11 +88,18 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			/*get the order size and check if there exist an order with given order number 
 			if there is no order present give a message no order stored with this id */
 
-			if(orderPayments.get(orderId)!=null)
-			{
-			for(OrderPayment od:orderPayments.get(orderId))	
-			if(od.getUserName().equals(username))
-			size= orderPayments.get(orderId).size();
+			if(orderPayments.get(orderId)!=null){
+
+				for(OrderPayment od:orderPayments.get(orderId))	{
+					
+					if(od.getUserName().equals(username)){
+						size= orderPayments.get(orderId).size();
+						
+					}
+
+				}
+			
+			
 			}
 			// display the orders if there exist order with order id
 			if(size>0)
@@ -127,10 +136,10 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			//get the order from file
 			try
 			{
-		
-				FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\BestDeal\\PaymentDetails.txt"));
-				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
-				orderPayments = (HashMap)objectInputStream.readObject();
+				orderPayments=MySQLDataStoreUtilities.selectOrder();
+				//FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\BestDeal\\PaymentDetails.txt"));
+				//ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
+				//orderPayments = (HashMap)objectInputStream.readObject();
 			}
 			catch(Exception e)
 			{
@@ -154,12 +163,13 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			//save the updated hashmap with removed order to the file	
 			try
 			{	
-				FileOutputStream fileOutputStream = new FileOutputStream(new File(TOMCAT_HOME+"\\webapps\\BestDeal\\PaymentDetails.txt"));
-				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            	objectOutputStream.writeObject(orderPayments);
-				objectOutputStream.flush();
-				objectOutputStream.close();       
-				fileOutputStream.close();
+				//FileOutputStream fileOutputStream = new FileOutputStream(new File(TOMCAT_HOME+"\\webapps\\BestDeal\\PaymentDetails.txt"));
+				//ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            	//objectOutputStream.writeObject(orderPayments);
+				//objectOutputStream.flush();
+				//objectOutputStream.close();       
+				//fileOutputStream.close();
+				MySQLDataStoreUtilities.removeOrder(ListOrderPayment);
 			}
 			catch(Exception e)
 			{
