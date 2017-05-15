@@ -53,6 +53,7 @@ public class Payment extends HttpServlet {
         pw.print("&nbsp&nbsp");  
         pw.print("is stored ");
         pw.print("<br>Your Order No is "+(orderId));
+        //pw.print("<br>Your Delivary Date is "+());
 		pw.print("</h2></div></div></div>");		
 		utility.printHtml("Footer.html");
 	}

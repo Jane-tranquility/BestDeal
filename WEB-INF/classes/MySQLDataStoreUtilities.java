@@ -73,7 +73,7 @@ public class MySQLDataStoreUtilities{
 					orderPayments.put(rs.getInt("orderID"), orderPayment);
 				}
 				ArrayList<OrderPayment> old=orderPayments.get(rs.getInt("orderID"));
-				OrderPayment op=new OrderPayment(rs.getInt("orderID"),rs.getString("userName"),rs.getString("orderName"), rs.getDouble("orderPrice"),rs.getString("userAddress"),rs.getString("creditcardNO"));
+				OrderPayment op=new OrderPayment(rs.getInt("orderID"),rs.getString("userName"),rs.getString("orderName"), rs.getDouble("orderPrice"),rs.getString("userAddress"),rs.getString("creditcardNO"),rs.getString("deliveryDate"));
 				old.add(op);
 			}
 
@@ -90,7 +90,7 @@ public class MySQLDataStoreUtilities{
 			Class.forName("com.mysql.jdbc.Driver").newInstance(); 
 			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase","root","root");
 
-			String insert="INSERT INTO CustomerOrders(orderID, userName, orderName, orderPrice, userAddress, creditcardNO)"+"VALUES(?,?,?,?,?,?);";
+			String insert="INSERT INTO CustomerOrders(orderID, userName, orderName, orderPrice, userAddress, creditcardNO, deliveryDate)"+"VALUES(?,?,?,?,?,?,date(now() + INTERVAL 14 DAY)) ;";
 			PreparedStatement pst=connection.prepareStatement(insert);
 
 			pst.setString(1,Integer.toString(orderId));
@@ -112,7 +112,7 @@ public class MySQLDataStoreUtilities{
 			Class.forName("com.mysql.jdbc.Driver").newInstance(); 
 			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase","root","root");
 
-			String delete="DELETE FROM CustomerOrders WHERE orderID=? AND orderName=?;";
+			String delete="DELETE FROM CustomerOrders WHERE orderID=? AND orderName=? AND deliveryDate>date(now() + INTERVAL 5 DAY);";
 			PreparedStatement pst=connection.prepareStatement(delete);
 
 			for (OrderPayment item: lists){

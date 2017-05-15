@@ -186,6 +186,7 @@ public class Utilities extends HttpServlet{
 			return size;		
 	}
 
+
 	/*  CartCount Function gets  the size of User Orders*/
 	public int CartCount(){
 		if(isLoggedin())
