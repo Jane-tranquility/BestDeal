@@ -282,6 +282,23 @@ public class Utilities extends HttpServlet{
 			}	
 	}
 
+
+	public void storeReview(String productName,String retailerZip, String productType, String productMaker, String reviewRating, String reviewDate, String reviewText){
+		HashMap<String, ArrayList<Review>> reviews=new HashMap<String, ArrayList<Review>>();
+		//try{
+		reviews=MongoDBDataStoreUtilities.selectReview();
+		//}catch(Exception e){}
+		if (!reviews.containsKey(productName)){
+			ArrayList<Review> arr=new ArrayList<Review>();
+			reviews.put(productName,arr);
+		}
+		ArrayList<Review> listReview=reviews.get(productName);
+		Review review=new Review(productName, username(), retailerZip, productType, productMaker, reviewRating, reviewDate, reviewText);
+		listReview.add(review);
+		//try{
+		MongoDBDataStoreUtilities.insertReview(productName, username(), retailerZip, productType, productMaker, reviewRating, reviewDate, reviewText);
+		//}catch(Exception e){}
+	}
 	
 	/* getConsoles Functions returns the Hashmap with all consoles in the store.*/
 

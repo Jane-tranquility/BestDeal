@@ -57,7 +57,7 @@ public class Registration extends HttpServlet {
 			}
 			catch(Exception e)
 			{
-				
+				error_msg="MySql server is not up and running";
 			}
 
 			// if the user already exist show error that already exist

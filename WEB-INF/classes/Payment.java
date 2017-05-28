@@ -33,13 +33,25 @@ public class Payment extends HttpServlet {
 
 		//iterate through each order
 
-		for (OrderItem oi : utility.getCustomerOrders())
-		{
+		try{
+			for (OrderItem oi : utility.getCustomerOrders()){
 
 			//set the parameter for each column and execute the prepared statement
 
-			utility.storePayment(orderId,oi.getName(),oi.getPrice(),userAddress,creditCardNo);
+				utility.storePayment(orderId,oi.getName(),oi.getPrice(),userAddress,creditCardNo);
+			}
+		}catch (Exception e){
+			utility.printHtml("Header.html");
+			utility.printHtml("LeftNavigationBar.html");
+	    	pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
+			pw.print("<a style='font-size: 24px;'>Order</a>");
+			pw.print("</h2><div class='entry'>");
+        	pw.print("<h2>My SQL Server is not up and running");
+        	//pw.print("<br>Your Delivary Date is "+());
+			pw.print("</h2></div></div></div>");		
+			utility.printHtml("Footer.html");
 		}
+		
 
 		//remove the order details from cart after processing
 			
