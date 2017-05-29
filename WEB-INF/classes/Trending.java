@@ -25,15 +25,23 @@ public class Trending extends HttpServlet {
 		pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
 		pw.print("<a style='font-size: 24px;'>Top List</a>");
 		pw.print("</h2><div class='entry'><table class='gridtable'>");
-
-		//HashMap<String, Interger> mostLiked=new HashMap<String, Integer>();
-		//mostLiked=MongoDBDataStoreUtilities.getFiveMostLikedProducts()
-
-		pw.print("<h2>Top five most liked products</h2>");
-		pw.print("<tr><td>Product Name</td><td>Maximum Rating</td></tr>");
-
 		
-		
+
+		pw.print("<h2>Top five most liked products(based on rating of 5)</h2>");
+		pw.print("<tr><td>Product Name</td><td>Count of rating 5</td></tr>");
+		MongoDBDataStoreUtilities.getFiveMostLikedProducts(pw);
+		pw.print("</table>");
+
+		pw.print("<table class='gridtable'>");
+		pw.print("<h2>Top five zipcodes of products sold</h2>");
+		pw.print("<tr><td>Zip Codes</td><td>Count of products sold</td></tr>");
+		MongoDBDataStoreUtilities.getTopFiveZipcodes(pw);
+		pw.print("</table>");
+
+		pw.print("<table class='gridtable'>");
+		pw.print("<h2>Top five most sold products(Based on number of sold, all ratings applied)</h2>");
+		pw.print("<tr><td>Produce Name</td><td>Count of products sold</td></tr>");
+		MongoDBDataStoreUtilities.getTopFiveProducts(pw);
 			
 		pw.print("</table></div></div></div>");	
 		utility.printHtml("Footer.html");
