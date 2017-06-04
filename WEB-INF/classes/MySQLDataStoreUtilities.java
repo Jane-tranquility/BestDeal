@@ -126,4 +126,27 @@ public class MySQLDataStoreUtilities{
 		}
 	}
 
+	public static HashMap<String, Product> getData(){
+		HashMap<String, Product> products=new HashMap<String, Product>();
+		Connection connection=null;
+		try { 
+			Class.forName("com.mysql.jdbc.Driver").newInstance(); 
+			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase","root","root"); 
+		
+			String select="SELECT * FROM ProductCatalog";
+			PreparedStatement pst = connection.prepareStatement(select);
+			ResultSet rs=pst.executeQuery();
+		
+			while(rs.next()){
+				if (!products.containsKey(rs.getString("productName"))){
+					Product product=new Product(rs.getString("productID"), rs.getString("productName"), rs.getString("productType"), rs.getDouble("productPrice"), rs.getString("productImage"), rs.getString("manufacture"));
+					products.put(rs.getString("productName"),product);
+				}
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} 
+		return products;
+	}
+
 }
