@@ -18,7 +18,7 @@ public class MySQLDataStoreUtilities{
 		Connection connection=null;
 		try { 
 			Class.forName("com.mysql.jdbc.Driver").newInstance(); 
-			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase","root","root"); 
+			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase?useSSL=false","root","root"); 
 		
 			String select="SELECT * FROM Registration";
 			PreparedStatement pst = connection.prepareStatement(select);
@@ -40,7 +40,7 @@ public class MySQLDataStoreUtilities{
 		Connection connection=null;
 		try { 
 			Class.forName("com.mysql.jdbc.Driver").newInstance(); 
-			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase","root","root");
+			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase?useSSL=false","root","root");
 
 			String insert="INSERT INTO Registration(username, password, usertype)"+"VALUES(?,?,?);";
 			PreparedStatement pst=connection.prepareStatement(insert);
@@ -60,7 +60,7 @@ public class MySQLDataStoreUtilities{
 
 		try { 
 			Class.forName("com.mysql.jdbc.Driver").newInstance(); 
-			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase","root","root");
+			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase?useSSL=false","root","root");
 
 			String query="SELECT * FROM CustomerOrders";
 			PreparedStatement pst=connection.prepareStatement(query);
@@ -88,7 +88,7 @@ public class MySQLDataStoreUtilities{
 		Connection connection=null;
 		try { 
 			Class.forName("com.mysql.jdbc.Driver").newInstance(); 
-			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase","root","root");
+			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase?useSSL=false","root","root");
 
 			String insert="INSERT INTO CustomerOrders(orderID, userName, orderName, orderPrice, userAddress, creditcardNO, deliveryDate)"+"VALUES(?,?,?,?,?,?,date(now() + INTERVAL 14 DAY)) ;";
 			PreparedStatement pst=connection.prepareStatement(insert);
@@ -110,7 +110,7 @@ public class MySQLDataStoreUtilities{
 		Connection connection=null;
 		try { 
 			Class.forName("com.mysql.jdbc.Driver").newInstance(); 
-			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase","root","root");
+			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase?useSSL=false","root","root");
 
 			String delete="DELETE FROM CustomerOrders WHERE orderID=? AND orderName=? AND deliveryDate>date(now() + INTERVAL 5 DAY);";
 			PreparedStatement pst=connection.prepareStatement(delete);
@@ -131,7 +131,7 @@ public class MySQLDataStoreUtilities{
 		Connection connection=null;
 		try { 
 			Class.forName("com.mysql.jdbc.Driver").newInstance(); 
-			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase","root","root"); 
+			connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/BestDealDatabase?useSSL=false","root","root"); 
 		
 			String select="SELECT * FROM ProductCatalog";
 			PreparedStatement pst = connection.prepareStatement(select);
@@ -139,8 +139,8 @@ public class MySQLDataStoreUtilities{
 		
 			while(rs.next()){
 				if (!products.containsKey(rs.getString("productName"))){
-					Product product=new Product(rs.getString("productID"), rs.getString("productName"), rs.getString("productType"), rs.getDouble("productPrice"), rs.getString("productImage"), rs.getString("manufacture"));
-					products.put(rs.getString("productName"),product);
+					Product product=new Product(rs.getString("productID").toLowerCase(), rs.getString("productName").toLowerCase(), rs.getString("productType"), rs.getDouble("productPrice"), rs.getString("productImage"), rs.getString("manufacture"));
+					products.put(rs.getString("productName").toLowerCase(),product);
 				}
 			}
 		} catch(Exception e) {

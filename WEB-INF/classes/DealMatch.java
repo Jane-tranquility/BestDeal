@@ -71,7 +71,7 @@ public class DealMatch extends HttpServlet {
 		pw.print("<div class='entry'><table id='dealMatch'><tr>");
 
 		for(Map.Entry<String, Product> entry : selectedproducts.entrySet()){
-			System.out.println(entry.getKey());
+			//System.out.println(entry.getKey());
 			pw.print("<td><div id='deal_item'>");
 			pw.print("<h3>"+entry.getKey()+"</h3>");
 			pw.print("<strong>$"+entry.getValue().getPrice()+"</strong>");
